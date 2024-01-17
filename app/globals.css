@@ -25,3 +25,10 @@ body {
 .header {
   font-family: "Lexend Deca", sans-serif;
 }
+
+.border {
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(235, 235, 235);
+  border-radius: 8px;
+}
