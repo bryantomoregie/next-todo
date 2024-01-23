@@ -1,10 +1,14 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import EditTodo from "./editTodo";
+import { v4 as uuidv4 } from "uuid";
+
+import CreateTodo from "./createTodo";
+import TodoListItem from "./todoListItem";
 
 export default function TodaysTask() {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [todos, setTodos] = useState<TodosArray>([]);
 
   function openModal() {
     setIsOpen(true);
@@ -14,7 +18,13 @@ export default function TodaysTask() {
     setIsOpen(false);
   }
 
-  let subtitle;
+  useEffect(() => {
+    const todosString = localStorage.getItem("todo");
+    if (todosString) {
+      const todos = JSON.parse(todosString);
+      setTodos(todos);
+    }
+  }, []);
 
   return (
     <div>
@@ -27,7 +37,10 @@ export default function TodaysTask() {
         </div>
         <text className="text-slate-500">Add New Task</text>
       </div>
-      <EditTodo modalIsOpen={modalIsOpen} closeModal={closeModal} />
+      <CreateTodo modalIsOpen={modalIsOpen} closeModal={closeModal} />
+      {todos.map((todo) => (
+        <TodoListItem />
+      ))}
     </div>
   );
 }
