@@ -4,7 +4,8 @@ type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 interface TodoItem {
   todo: string;
-  value: Value;
+  date?: Value;
+  id?: string;
 }
 
 type TodosArray = TodoItem[];

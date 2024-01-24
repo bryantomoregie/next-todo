@@ -8,7 +8,7 @@ export default function Home() {
       <Menu />
       <div className="w-full">
         <header className="flex flex-row gap-8">
-          <text className="text-5xl font-header font-semibold">Today</text>
+          <div className="text-5xl font-header font-semibold">Today</div>
           <Day />
         </header>
         <TodaysTask />

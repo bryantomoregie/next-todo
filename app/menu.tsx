@@ -28,12 +28,12 @@ export default function Menu() {
             }}
           >
             <MdKeyboardDoubleArrowRight />
-            <text>Upcoming</text>
+            <div>Upcoming</div>
             <div>12</div>
           </div>
           <div>
             <MdOutlineChecklist />
-            <text>Today</text>
+            <div>Today</div>
             <div>5</div>
           </div>
         </div>

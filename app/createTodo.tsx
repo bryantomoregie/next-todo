@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { v4 as uuidv4 } from "uuid";
 
 const customStyles = {
   content: {
@@ -28,15 +29,17 @@ export default function CreateTodo({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const id = uuidv4();
     if (todo) {
       const todoListString = localStorage.getItem("todo");
       if (todoListString) {
         const todoList = JSON.parse(todoListString);
         localStorage.setItem(
           "todo",
-          JSON.stringify([...todoList, { todo, value }])
+          JSON.stringify([...todoList, { todo, value, id }])
         );
-      } else localStorage.setItem("todo", JSON.stringify([{ todo, value }]));
+      } else
+        localStorage.setItem("todo", JSON.stringify([{ todo, value, id }]));
       closeModal();
     }
     setTodo(undefined);

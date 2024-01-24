@@ -35,11 +35,11 @@ export default function TodaysTask() {
         <div className="pr-4 text-slate-500">
           <FaPlus />
         </div>
-        <text className="text-slate-500">Add New Task</text>
+        <div className="text-slate-500">Add New Task</div>
       </div>
       <CreateTodo modalIsOpen={modalIsOpen} closeModal={closeModal} />
       {todos.map((todo) => (
-        <TodoListItem />
+        <TodoListItem key={todo.id} todo={todo.todo} date={todo.date} />
       ))}
     </div>
   );
