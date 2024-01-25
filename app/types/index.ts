@@ -1,11 +1,11 @@
 type ValuePiece = Date | null;
 
-type Value = ValuePiece | [ValuePiece, ValuePiece];
+type Value = ValuePiece;
 
 interface TodoItem {
   todo: string;
+  id: string;
   date?: Value;
-  id?: string;
 }
 
 type TodosArray = TodoItem[];

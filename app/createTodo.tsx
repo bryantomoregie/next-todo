@@ -36,10 +36,13 @@ export default function CreateTodo({
         const todoList = JSON.parse(todoListString);
         localStorage.setItem(
           "todo",
-          JSON.stringify([...todoList, { todo, value, id }])
+          JSON.stringify([...todoList, { todo, date: value, id }])
         );
       } else
-        localStorage.setItem("todo", JSON.stringify([{ todo, value, id }]));
+        localStorage.setItem(
+          "todo",
+          JSON.stringify([{ todo, date: value, id }])
+        );
       closeModal();
     }
     setTodo(undefined);

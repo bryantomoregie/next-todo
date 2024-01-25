@@ -21,8 +21,8 @@ export default function TodaysTask() {
   useEffect(() => {
     const todosString = localStorage.getItem("todo");
     if (todosString) {
-      const todos = JSON.parse(todosString);
-      setTodos(todos);
+      const todosParsed = JSON.parse(todosString);
+      setTodos(todosParsed);
     }
   }, []);
 

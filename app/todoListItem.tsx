@@ -3,10 +3,11 @@ export default function TodoListItem({
   date,
 }: {
   todo: string;
-  date: Date;
+  date?: Value;
 }) {
-  const dateString = dateFormatter(date);
-  console.log({ date, dateString });
+  const date1 = date ? new Date(date as Date) : undefined;
+
+  const dateString = dateFormatter(date1);
   return (
     <div className="border mt-2 flex flex-row p-2">
       <input type="checkbox" className="ml-1" />
@@ -16,7 +17,7 @@ export default function TodoListItem({
   );
 }
 
-const dateFormatter = (date?: Date) => {
+const dateFormatter = (date?: Value) => {
   const day = date?.getDay();
   const month = date?.getMonth();
   const year = date?.getFullYear();
