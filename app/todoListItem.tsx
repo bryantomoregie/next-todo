@@ -3,11 +3,13 @@ export default function TodoListItem({
   date,
   id,
   setTodos,
+  todos,
 }: {
   todo: string;
   date: Value;
   id: string;
   setTodos: React.Dispatch<React.SetStateAction<TodosArray>>;
+  todos: TodosArray;
 }) {
   const date1 = date ? new Date(date as Date) : undefined;
 
@@ -17,7 +19,7 @@ export default function TodoListItem({
       <input
         type="checkbox"
         className="ml-1"
-        onMouseUp={() => removeTodo(id, setTodos)}
+        onMouseUp={() => removeTodo(id, setTodos, todos)}
       />
       <div className="mx-4">{todo}</div>
       {date ? <div>{dateString}</div> : null}
@@ -35,13 +37,10 @@ const dateFormatter = (date?: Value) => {
 
 const removeTodo = (
   id: string,
-  setTodos: React.Dispatch<React.SetStateAction<TodosArray>>
+  setTodos: React.Dispatch<React.SetStateAction<TodosArray>>,
+  todos: TodosArray
 ) => {
-  const todoListString = localStorage.getItem("todo");
-  if (todoListString) {
-    const todoList: TodosArray = JSON.parse(todoListString);
-    const filteredTodo = todoList.filter((todo) => todo.id !== id);
-    localStorage.setItem("todo", JSON.stringify(filteredTodo));
-    setTodos(filteredTodo);
-  }
+  const filteredTodo = todos.filter((todo) => todo.id !== id);
+  localStorage.setItem("todo", JSON.stringify(filteredTodo));
+  setTodos(filteredTodo);
 };

@@ -18,25 +18,6 @@ export default function Menu() {
           ></input>
         </div>
         <header className="text-sm pb-4">Tasks</header>
-        <div>
-          <div
-            className="flex flex-row items-center w-max"
-            style={{
-              borderStyle: "solid",
-              borderColor: "black",
-              borderWidth: 2,
-            }}
-          >
-            <MdKeyboardDoubleArrowRight />
-            <div>Upcoming</div>
-            <div>12</div>
-          </div>
-          <div>
-            <MdOutlineChecklist />
-            <div>Today</div>
-            <div>5</div>
-          </div>
-        </div>
       </div>
     </div>
   );

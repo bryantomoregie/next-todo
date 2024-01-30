@@ -50,6 +50,7 @@ export default function TodaysTask() {
           id={todo.id}
           todo={todo.todo}
           date={todo.date}
+          todos={todos}
           setTodos={setTodos}
         />
       ))}
