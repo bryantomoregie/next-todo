@@ -5,7 +5,7 @@ type Value = ValuePiece;
 interface TodoItem {
   todo: string;
   id: string;
-  date?: Value;
+  date: Value;
 }
 
 type TodosArray = TodoItem[];

@@ -9,6 +9,7 @@ import TodoListItem from "./todoListItem";
 export default function TodaysTask() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [todos, setTodos] = useState<TodosArray>([]);
+  const [todo, setTodo] = useState<string>();
 
   function openModal() {
     setIsOpen(true);
@@ -24,7 +25,7 @@ export default function TodaysTask() {
       const todosParsed = JSON.parse(todosString);
       setTodos(todosParsed);
     }
-  }, []);
+  }, [todo]);
 
   return (
     <div>
@@ -37,9 +38,20 @@ export default function TodaysTask() {
         </div>
         <div className="text-slate-500">Add New Task</div>
       </div>
-      <CreateTodo modalIsOpen={modalIsOpen} closeModal={closeModal} />
+      <CreateTodo
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+        todo={todo}
+        setTodo={setTodo}
+      />
       {todos.map((todo) => (
-        <TodoListItem key={todo.id} todo={todo.todo} date={todo.date} />
+        <TodoListItem
+          key={todo.id}
+          id={todo.id}
+          todo={todo.todo}
+          date={todo.date}
+          setTodos={setTodos}
+        />
       ))}
     </div>
   );

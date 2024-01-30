@@ -20,12 +20,15 @@ const customStyles = {
 export default function CreateTodo({
   modalIsOpen,
   closeModal,
+  todo,
+  setTodo,
 }: {
   modalIsOpen: boolean;
   closeModal: VoidFunction;
+  setTodo: React.Dispatch<React.SetStateAction<string | undefined>>;
+  todo?: string;
 }) {
   const [value, onChange] = useState<Value>(new Date());
-  const [todo, setTodo] = useState<string>();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
